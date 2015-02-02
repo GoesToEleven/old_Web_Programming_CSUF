@@ -14,6 +14,7 @@ func main() {
 
 	// greeting is the memory location of message; change string literal to which it points
 	*greeting = "hi"
+	// fmt.Println(*greeting)
 
 	fmt.Println("message and greeting: ", message, *greeting)
 }
