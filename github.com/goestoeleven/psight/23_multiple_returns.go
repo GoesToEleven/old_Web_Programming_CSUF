@@ -5,16 +5,14 @@ import "fmt"
 type Contact struct {
 	greeting string
 	name     string
-	// name     string
-	// greeting string
 }
 
 func Greet(contact Contact) {
 	fmt.Println(CreateMessage(contact.greeting, contact.name))
 }
 
-func CreateMessage(greeting, name string) string {
-	return greeting + " " + name
+func CreateMessage(greeting, name string) (string, string) {
+	return greeting + " " + name, "Hey, " + name
 }
 
 func main() {
@@ -31,4 +29,5 @@ func main() {
 	Greet(v)
 }
 
-// you don't need to return anything (void)
+// put parentheses around return types and comma separate them
+// use comma to separate the multiple returns

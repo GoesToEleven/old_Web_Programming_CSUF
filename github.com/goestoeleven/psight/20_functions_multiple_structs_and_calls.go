@@ -2,31 +2,31 @@ package main
 
 import "fmt"
 
-type Salutation struct {
+type Contact struct {
 	name     string
 	greeting string
 }
 
-func Greet(salutation Salutation) {
-	fmt.Println(salutation.name)
-	fmt.Println(salutation.greeting)
+func Greet(contact Contact) {
+	fmt.Println(contact.name)
+	fmt.Println(contact.greeting)
 }
 
 func main() {
 
-	var s = Salutation{}
-	s.name = "Bob"
+	var s = Contact{}
+	s.name = "Marcus"
 	s.greeting = "Hello!"
 	Greet(s)
 
-	var t = Salutation{"Medhi", "Good to see you!"}
+	var t = Contact{"Medhi", "Good to see you!"}
 	Greet(t)
 
-	u := Salutation{"Sushant", "Glad you're in class!"}
+	u := Contact{"Sushant", "Glad you're in class!"}
 	Greet(u)
 
-	v := Salutation{}
-	v.name = "Max"
+	v := Contact{}
+	v.name = "John"
 	v.greeting = "We're learning great things!"
 	Greet(v)
 

@@ -2,21 +2,21 @@ package main
 
 import "fmt"
 
-type Salutation struct {
+type Contact struct {
 	name     string
 	greeting string
 }
 
-func Greet(salutation Salutation) {
-	fmt.Println(salutation.name)
-	fmt.Println(salutation.greeting)
+func Greet(contact Contact) {
+	fmt.Println(contact.name)
+	fmt.Println(contact.greeting)
 }
 
 func main() {
-	var s = Salutation{}
-	s.name = "Bob"
-	s.greeting = "Hello!"
-	Greet(s)
+	var c = Contact{}
+	c.name = "Marcus"
+	c.greeting = "Hello!"
+	Greet(c)
 }
 
 // FUNCTIONS IN GO

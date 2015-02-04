@@ -8,19 +8,19 @@ import "fmt"
 // -- lower case: not available (private)
 // ***********************************************
 
-type Salutation struct {
+type Contact struct {
 	name     string
 	greeting string
 }
 
 func main() {
 
-	var s = Salutation{}
-	s.name = "Bob"
-	s.greeting = "Hello!"
+	var c = Contact{}
+	c.name = "Marcus"
+	c.greeting = "Hello!"
 
-	fmt.Println(s.name)
-	fmt.Println(s.greeting)
+	fmt.Println(c.name)
+	fmt.Println(c.greeting)
 
 }
 

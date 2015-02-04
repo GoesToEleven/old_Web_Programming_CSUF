@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 
-	message := "Hello Go World!"
+	message := "Hello World!"
 
 	var greeting *string = &message
 

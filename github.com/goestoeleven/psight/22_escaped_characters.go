@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-type Salutation struct {
+type Contact struct {
 	greeting string
 	name     string
 }
 
-func Greet(salutation Salutation) {
-	fmt.Println(CreateMessage(salutation.greeting, salutation.name))
+func Greet(contact Contact) {
+	fmt.Println(CreateMessage(contact.greeting, contact.name))
 }
 
 func CreateMessage(greeting, name string) (string, string) {
@@ -17,15 +17,15 @@ func CreateMessage(greeting, name string) (string, string) {
 
 func main() {
 
-	var t = Salutation{"Good to see you,", "Medhi"}
+	var t = Contact{"Good to see you,", "Medhi"}
 	Greet(t)
 
-	u := Salutation{"Glad you're in class,", "Sushant"}
+	u := Contact{"Glad you're in class,", "Sushant"}
 	Greet(u)
 
-	v := Salutation{}
+	v := Contact{}
 	v.greeting = "We're learning great things,"
-	v.name = "Max"
+	v.name = "Marcus"
 	Greet(v)
 }
 

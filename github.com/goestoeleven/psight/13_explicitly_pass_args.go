@@ -2,17 +2,17 @@ package main
 
 import "fmt"
 
-type Salutation struct {
+type Contact struct {
 	name     string
 	greeting string
 }
 
 func main() {
 
-	var s = Salutation{greeting: "Hello!", name: "Joe"}
+	var c = Contact{greeting: "Hello!", name: "Marcus"}
 
-	fmt.Println(s.name)
-	fmt.Println(s.greeting)
+	fmt.Println(c.name)
+	fmt.Println(c.greeting)
 
 }
 

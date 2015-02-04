@@ -5,7 +5,7 @@ import "fmt"
 func main() {
 
 	// set message to a string literal
-	message := "Hello Go World!"
+	message := "Hello World!"
 	fmt.Println("message: ", message)
 
 	// set greeting to point towards memory location of message

@@ -6,7 +6,7 @@ func main() {
 	var message string
 	var a, b, c int
 
-	message = "Hello Go World!"
+	message = "Hello World!"
 
 	fmt.Println(message, a, b, c)
 }

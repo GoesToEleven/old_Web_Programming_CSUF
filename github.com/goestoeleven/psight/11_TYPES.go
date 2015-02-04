@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-type Salutation string
+type mySentence string
 
 func main() {
 
-	var message Salutation = "Hello World!"
+	var message mySentence = "Hello World!"
 
 	// var message string = "Hello World!"
 
