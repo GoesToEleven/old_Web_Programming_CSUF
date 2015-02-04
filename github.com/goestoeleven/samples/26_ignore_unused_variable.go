@@ -7,11 +7,11 @@ type Contact struct {
 	name     string
 }
 
-func Greet(contact Contact) {
+func Greet(person Contact) {
 	// this is what we had before:
 	// fmt.Println(CreateMessage(contact.greeting, contact.name))
 
-	greeting, _, _ := CreateMessage(contact.greeting, contact.name)
+	greeting, _, _ := CreateMessage(person.greeting, person.name)
 
 	// IF WE COMMENT OUT ONE OF THE BELOW WE GET AN ERROR
 	// you can't declare a return and never use it - this causes an error

@@ -2,17 +2,28 @@ package main
 
 import "fmt"
 
+// a bundle of variables of different types
+// a variable of a variable
+// you wrapped up a bunch of variables
 type Contact struct {
 	name     string
 	greeting string
+	age      int
 }
 
-func Greet(contact Contact) {
-	fmt.Println(contact.name)
-	fmt.Println(contact.greeting)
+func Greet(person Contact) {
+	fmt.Println(person.name)
+	fmt.Println(person.greeting)
 }
 
 func main() {
+	// you can write this either way:
+
+	// var c = Contact{
+	// 	name:     "Marcus",
+	// 	greeting: "Hello!",
+	// }
+
 	var c = Contact{}
 	c.name = "Marcus"
 	c.greeting = "Hello!"

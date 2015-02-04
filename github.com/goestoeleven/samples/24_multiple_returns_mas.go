@@ -7,8 +7,8 @@ type Contact struct {
 	name     string
 }
 
-func Greet(contact Contact) {
-	fmt.Println(CreateMessage(contact.greeting, contact.name))
+func Greet(person Contact) {
+	fmt.Println(CreateMessage(person.greeting, person.name))
 }
 
 func CreateMessage(greeting, name string) (string, string, int) {

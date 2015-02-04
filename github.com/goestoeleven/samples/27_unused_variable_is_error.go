@@ -10,5 +10,8 @@ func main() {
 	name = "Medhi"
 
 	fmt.Println(message)
-	// fmt.Println(name)
+
+	// comment this out to see an error:
+	// name declared and not used
+	fmt.Println(name)
 }
