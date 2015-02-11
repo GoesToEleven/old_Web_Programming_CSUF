@@ -25,14 +25,14 @@ func CreateMessage(greeting ...string, name string) (myGreeting string, myName s
 
 func main() {
 
-	var t = Contact{"Good to see you,", "Tim"}
+	var t = Contact{"Good to see you,", "Medhi"}
 	Greet(t)
 
-	u := Contact{"Glad you're in class,", "Jenny"}
+	u := Contact{"Glad you're in class,", "Sushant"}
 	Greet(u)
 
 	v := Contact{}
 	v.greeting = "We're learning great things,"
-	v.name = "Julian"
+	v.name = "Max"
 	Greet(v)
 }

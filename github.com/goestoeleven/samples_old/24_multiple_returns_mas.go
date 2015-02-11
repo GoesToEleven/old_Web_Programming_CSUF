@@ -8,16 +8,12 @@ type Contact struct {
 }
 
 func Greet(person Contact) {
-	myGreetingMas, myNameMas := CreateMessage(person.greeting, person.name)
-	fmt.Print(myGreetingMas)
-	fmt.Print(myNameMas)
+	fmt.Println(CreateMessage(person.greeting, person.name))
 }
 
-// YOU CAN ALSO NAME THE RETURN VALUES
-func CreateMessage(greeting, name string) (myGreeting string, myName string) {
-	myGreeting = greeting + " " + name
-	myName = "\nHey, " + name + "\n"
-	return
+func CreateMessage(greeting, name string) (string, string, int) {
+	myNum := 120
+	return greeting + " " + name, "\nHey, " + name + "\n", myNum
 }
 
 func main() {
@@ -33,3 +29,6 @@ func main() {
 	v.name = "Max"
 	Greet(v)
 }
+
+// put parentheses around return types and comma separate them
+// use comma to separate the multiple returns

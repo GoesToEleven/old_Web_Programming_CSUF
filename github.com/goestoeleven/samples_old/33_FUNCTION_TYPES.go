@@ -15,8 +15,8 @@ type Contact struct {
 
 // STEP 1:
 // create a function that takes as a parameter a function
-func Greet(person Contact, myWassa func(string)) {
-	myGreetingMas, myNameMas := CreateMessage(person.name, person.greeting, "howdy")
+func Greet(contact Contact, myWassa func(string)) {
+	myGreetingMas, myNameMas := CreateMessage(contact.name, contact.greeting, "howdy")
 	// had this before:
 	// fmt.Print(myGreetingMas)
 	// fmt.Print(myNameMas)
@@ -46,15 +46,15 @@ func myPrintln(s string) {
 // pass in functions (passing a function as an argument to another function)
 func main() {
 
-	var t = Contact{"Good to see you,", "Tim"}
+	var t = Contact{"Good to see you,", "Medhi"}
 	Greet(t, myPrint)
 
-	u := Contact{"Glad you're in class,", "Jenny"}
+	u := Contact{"Glad you're in class,", "Sushant"}
 	Greet(u, myPrint)
 
 	v := Contact{}
 	v.greeting = "We're learning great things,"
-	v.name = "Julian"
+	v.name = "Max"
 	Greet(v, myPrintln)
 }
 

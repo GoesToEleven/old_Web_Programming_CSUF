@@ -7,16 +7,15 @@ type Contact struct {
 	name     string
 }
 
-// FUNCTIONS ARE TYPES
-// functions in go are types
-// functions behave as types in go
-// you can pass functions around just as you'd pass types around
-// pass functions just like any other argument / parameter
-
 // STEP 1:
-// create a function that takes as a parameter a function
-func Greet(person Contact, myWassa func(string)) {
-	myGreetingMas, myNameMas := CreateMessage(person.name, person.greeting, "howdy")
+// declare a type
+type MyPrinterType func(string)
+
+// use the type
+// we had this before:
+// func Greet(person Contact, myWassa func(string)) {
+func Greet(person Contact, anotherString string, myWassa MyPrinterType) {
+	myGreetingMas, myNameMas := CreateMessage(person.name, anotherString, person.greeting, "howdy")
 	// had this before:
 	// fmt.Print(myGreetingMas)
 	// fmt.Print(myNameMas)
@@ -24,8 +23,8 @@ func Greet(person Contact, myWassa func(string)) {
 	myWassa(myNameMas)
 }
 
-func CreateMessage(name string, greeting ...string) (myGreeting string, myName string) {
-	myGreeting = greeting[1] + " " + name
+func CreateMessage(name string, anotherString string, greeting ...string) (myGreeting string, myName string) {
+	myGreeting = greeting[1] + " " + name + anotherString
 	myName = "\nHey, " + name + "\n"
 	return
 }
@@ -36,8 +35,6 @@ func myPrint(s string) {
 	fmt.Print(s)
 }
 
-// STEP 2:
-// create some functions you might want to pass in
 func myPrintln(s string) {
 	fmt.Println(s)
 }
@@ -47,15 +44,17 @@ func myPrintln(s string) {
 func main() {
 
 	var t = Contact{"Good to see you,", "Tim"}
-	Greet(t, myPrint)
+	Greet(t, "!!!", myPrint)
 
 	u := Contact{"Glad you're in class,", "Jenny"}
-	Greet(u, myPrint)
+	Greet(u, "???", myPrintln)
 
 	v := Contact{}
 	v.greeting = "We're learning great things,"
 	v.name = "Julian"
-	Greet(v, myPrintln)
+	Greet(v, "^^^", func(s string) {
+		fmt.Println(s)
+	})
 }
 
 // see this link for a nice diagram of the above process:

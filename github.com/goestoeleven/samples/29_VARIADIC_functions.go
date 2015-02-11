@@ -14,25 +14,25 @@ func Greet(contact Contact) {
 }
 
 // VARIADIC FUNCTIONS
-// a variable number of parameters of a certain type
-// useful when we don't know how many parameters are going to be passed in
+// a variable number of arguments of a certain type
+// useful when we don't know how many arguments are going to be passed in
 func CreateMessage(name string, greeting ...string) (myGreeting string, myName string) {
 	// change the index from 0 to 1 and watch what happens
-	myGreeting = greeting[0] + " " + name
+	myGreeting = greeting[1] + " " + greeting[0] + " " + name
 	myName = "\nHey, " + name + "\n"
 	return
 }
 
 func main() {
 
-	var t = Contact{"Good to see you,", "Medhi"}
+	var t = Contact{"Good to see you,", "Tim"}
 	Greet(t)
 
-	u := Contact{"Glad you're in class,", "Sushant"}
+	u := Contact{"Glad you're in class,", "Jenny"}
 	Greet(u)
 
 	v := Contact{}
 	v.greeting = "We're learning great things,"
-	v.name = "Max"
+	v.name = "Julian"
 	Greet(v)
 }

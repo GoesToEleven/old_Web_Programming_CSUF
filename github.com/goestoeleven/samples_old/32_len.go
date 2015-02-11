@@ -8,7 +8,7 @@ type Contact struct {
 }
 
 func Greet(contact Contact) {
-	myGreetingMas, myNameMas := CreateMessage(contact.greeting, contact.name, "howdy")
+	myGreetingMas, myNameMas := CreateMessage(contact.name, contact.greeting, "howdy")
 	fmt.Print(myGreetingMas)
 	fmt.Print(myNameMas)
 }
@@ -16,23 +16,23 @@ func Greet(contact Contact) {
 // VARIADIC FUNCTIONS
 // a variable number of parameters of a certain type
 // useful when we don't know how many parameters are going to be passed in
-func CreateMessage(greeting ...string, name string) (myGreeting string, myName string) {
-	// change the index from 0 to 1 and watch what happens
-	myGreeting = greeting[0] + " " + name
+func CreateMessage(name string, greeting ...string) (myGreeting string, myName string) {
+	fmt.Println(len(greeting))
+	myGreeting = greeting[1] + " " + name
 	myName = "\nHey, " + name + "\n"
 	return
 }
 
 func main() {
 
-	var t = Contact{"Good to see you,", "Tim"}
+	var t = Contact{"Good to see you,", "Medhi"}
 	Greet(t)
 
-	u := Contact{"Glad you're in class,", "Jenny"}
+	u := Contact{"Glad you're in class,", "Sushant"}
 	Greet(u)
 
 	v := Contact{}
 	v.greeting = "We're learning great things,"
-	v.name = "Julian"
+	v.name = "Max"
 	Greet(v)
 }

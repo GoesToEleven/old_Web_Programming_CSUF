@@ -7,8 +7,8 @@ type Contact struct {
 	name     string
 }
 
-func Greet(person Contact) {
-	myGreetingMas, myNameMas := CreateMessage(person.greeting, person.name)
+func Greet(contact Contact) {
+	myGreetingMas, myNameMas := CreateMessage(contact.greeting, contact.name)
 	fmt.Print(myGreetingMas)
 	fmt.Print(myNameMas)
 }
