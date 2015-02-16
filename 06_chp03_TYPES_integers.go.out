@@ -1,0 +1,12 @@
+myint -  int
+myuint -  uint
+myuint8 -  byte
+mybyte -  byte
+myuint16 -  uint16
+myuint32 -  uint32
+myuint64 -  uint64
+myint8 -  int8
+myint16 -  int16
+myint32 -  rune
+myrune -  rune
+myint64 -  int64

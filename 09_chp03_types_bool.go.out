@@ -1,0 +1,10 @@
+bool
+bool
+bool
+bool
+ue && false false
+true || true true
+true || false true
+!true false
+********
+bool
