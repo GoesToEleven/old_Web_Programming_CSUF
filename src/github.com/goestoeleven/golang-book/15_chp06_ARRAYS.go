@@ -28,6 +28,10 @@ func main() {
 		totalMas += value
 	}
 	fmt.Println(totalMas / float64(len(x)))
+	// QUESTION: why do we need to cast the len(x) above?
+	// particularly when we were able to divide a float by an int
+	// in 07_chap03_types_floating_point.go
+	// (note: I don't have the answer)
 
 	// ARRAY SHORTHAND
 	z := [5]float64{98, 93, 77, 82, 83}
