@@ -3,7 +3,7 @@ package math
 func Average(intSliceParam []int) int {
 
 	total := 0
-	count := 10
+	count := 3
 
 	for _, x := range intSliceParam {
 		total += x

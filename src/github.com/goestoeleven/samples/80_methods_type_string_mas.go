@@ -7,7 +7,7 @@ type mySentence string
 
 // TYPES CAN CONTAIN METHODS
 func (s mySentence) eatChocolate() {
-	fmt.Println("METHOD: EAT MORE CHOCOLATE NOW")
+	fmt.Println("METHOD: EAT MORE CHOCOLATE NOW", s)
 }
 
 func main() {
