@@ -54,6 +54,7 @@ func main() {
 	// myint64 := -9223372036854775807
 
 	// CASTING
+	myUncast := -255
 	myint := int(-255)
 	myuint := uint(255)
 	myuint8 := uint8(255)
@@ -67,6 +68,7 @@ func main() {
 	myrune := rune(-2147483648)
 	myint64 := int64(-9223372036854775808)
 
+	fmt.Println("myUncast - ", switchOnType(myUncast))
 	fmt.Println("myint - ", switchOnType(myint))
 	fmt.Println("myuint - ", switchOnType(myuint))
 	fmt.Println("myuint8 - ", switchOnType(myuint8))
