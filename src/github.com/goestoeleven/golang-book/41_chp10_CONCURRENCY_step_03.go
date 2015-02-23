@@ -12,7 +12,7 @@ Let's add some delay to the function using time.Sleep and rand.Intn:
 
 func f(n int) {
 	for i := 0; i < 10; i++ {
-		fmt.Println(n, ":", i)
+		fmt.Println(n, ":", string(i+65))
 		amt := time.Duration(rand.Intn(250))
 		time.Sleep(time.Millisecond * amt)
 	}
@@ -27,6 +27,6 @@ func main() {
 }
 
 /*
-f prints out the numbers from 0 to 10, waiting between 0 and 250 ms
-after each one. The goroutines should now run simultaneously.
+f prints out the letters from A to J, waiting between 0 and 250 ms
+after each one. You should see now how the goroutines run simultaneously.
 */

@@ -9,7 +9,7 @@ type contact struct {
 }
 
 // STRUCTS (TYPES) CAN CONTAIN METHODS
-func (c contact) sayHello() {
+func (c contxxxact) sayHello() {
 	fmt.Println("METHOD: " + c.name + " says hello.")
 }
 
@@ -27,7 +27,7 @@ func main() {
 // we can use a STRUCT like a class
 
 // go is not an OOP language
-// the type sustem that exists in go
+// the type system that exists in go
 // -- makes it so you don't need classes
 // -- gives you more flexibility b/c you're not constrained by class requirements
 // instead of using classes, we have user defined types

@@ -10,6 +10,10 @@ func (s mySentence) eatChocolate() {
 	fmt.Println("METHOD: EAT MORE CHOCOLATE NOW")
 }
 
+func (s mySentence) eatPeanuts() {
+	fmt.Println("METHOD: EAT MORE PEANUTS")
+}
+
 func main() {
 
 	// TYPES CAN CONTAIN DATA
@@ -18,5 +22,6 @@ func main() {
 
 	// TYPES CAN USE METHODS
 	message.eatChocolate()
+	message.eatPeanuts()
 
 }

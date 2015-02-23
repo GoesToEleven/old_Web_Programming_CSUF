@@ -3,18 +3,19 @@ package main
 import "fmt"
 
 /*
-Goroutines are lightweight and we can easily create thousands of them.
-We can modify our program to run 10 goroutines by doing this:
+Goroutines are lightweight.
+We can easily create thousands of them.
+Let's modify our program to run 1,000,000 goroutines:
 */
 
 func f(n int) {
-	for i := 0; i < 10; i++ {
+	for i := 0; i <= 2; i++ {
 		fmt.Println(n, ":", i)
 	}
 }
 
 func main() {
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 1000; i++ {
 		go f(i)
 	}
 	var input string
