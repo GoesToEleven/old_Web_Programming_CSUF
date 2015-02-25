@@ -9,7 +9,7 @@ type contact struct {
 }
 
 // STRUCTS (TYPES) CAN CONTAIN METHODS
-func (c contxxxact) sayHello() {
+func (c contact) sayHello() {
 	fmt.Println("METHOD: " + c.name + " says hello.")
 }
 

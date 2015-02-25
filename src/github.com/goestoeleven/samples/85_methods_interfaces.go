@@ -9,9 +9,9 @@ type contact struct {
 
 type contacts []contact
 
-// declare a type
-// say that it's an interface
-// declare the method(s)
+// (1) - declare a type
+// (2) - say that it's an interface
+// (3) - declare the method(s)
 type renamable interface {
 	rename(newName string)
 }

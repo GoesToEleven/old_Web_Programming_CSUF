@@ -11,7 +11,7 @@ Let's add some delay to the function using time.Sleep and rand.Intn:
 */
 
 func f(n int) {
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 		fmt.Println(n, ":", string(i+65))
 		amt := time.Duration(rand.Intn(250))
 		time.Sleep(time.Millisecond * amt)

@@ -17,7 +17,7 @@ func SwitchOnType(x interface{}) {
 }
 
 // the EMPTY INTERFACE is being declared when SwitchOnType is being declared
-// question: is it a parameter?
+// question: is the empty interface a parameter, an argument, both, or neither?
 
 func main() {
 	SwitchOnType(7)
