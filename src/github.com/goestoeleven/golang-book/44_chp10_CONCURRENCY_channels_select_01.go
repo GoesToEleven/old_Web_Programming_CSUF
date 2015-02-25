@@ -17,7 +17,7 @@ func main() {
 	go func() {
 		for {
 			c1 <- "from 1"
-			time.Sleep(time.Second * 2)
+			time.Sleep(time.Second * 1)
 		}
 	}()
 

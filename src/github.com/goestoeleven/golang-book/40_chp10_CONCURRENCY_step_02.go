@@ -15,7 +15,7 @@ func f(n int) {
 }
 
 func main() {
-	for i := 0; i < 1000; i++ {
+	for i := 0; i < 1000000; i++ {
 		go f(i)
 	}
 	var input string

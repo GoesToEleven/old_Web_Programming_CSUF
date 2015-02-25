@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
 
 /*
 Channels provide a way for two goroutines to communicate with one another
@@ -29,7 +26,7 @@ func printer(c chan string) {
 	for {
 		msg := <-c
 		fmt.Println(msg)
-		time.Sleep(time.Second * 1)
+		// time.Sleep(time.Second * 1)
 	}
 }
 

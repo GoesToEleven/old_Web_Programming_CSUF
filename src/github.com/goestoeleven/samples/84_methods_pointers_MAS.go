@@ -14,8 +14,8 @@ func rephraseDos(m *myPhrase) {
 	*m = "Dos - Bali in the summer."
 }
 
-func (m myPhrase) rephraseTres() {
-	m = "Tres - Uluwatu all afternoon."
+func (m *myPhrase) rephraseTres() {
+	*m = "Tres - Uluwatu all afternoon."
 }
 
 // func (m myPhrase) rephraseQuatro(s string) {

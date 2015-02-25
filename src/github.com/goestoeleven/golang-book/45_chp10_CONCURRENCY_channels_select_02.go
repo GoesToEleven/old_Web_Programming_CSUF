@@ -34,7 +34,7 @@ func main() {
 				fmt.Println("Message 1", msg1)
 			case msg2 := <-c2:
 				fmt.Println("Message 2", msg2)
-			case <-time.After(time.Second):
+			case <-time.After(time.Second * 1):
 				fmt.Println("timeout")
 			}
 		}
