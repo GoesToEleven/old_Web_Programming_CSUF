@@ -1,4 +1,4 @@
-/*
+
 Bundling code in packages serves 3 purposes:
 
 It reduces the chance of having overlapping names.
@@ -26,6 +26,6 @@ but it's a lot easier if you stay within this pattern.
 
 -------------
 
-SEE THE FOLDER
+FOR CODE EXAMPLES - SEE THE FOLDER:
+
 Web_Programming_CSUF / src / github.com / goestoeleven / golang-book / PACKAGES
-*/
