@@ -25,7 +25,7 @@ see
 */
 
 // the Page struct stores the page in memory
-// this function saves the page to persistent (secondary) storage
+// the function 'save' below saves the page to persistent (secondary) storage
 // the function will write the file to disk
 func (p *Page) save() error {
 	filename := p.Title + ".txt"
@@ -54,13 +54,14 @@ func loadPage(title string) (*Page, error) {
 }
 
 /*
-the function returns the memory location of the page
-("returns a pointer to a Page literal")
+the function returns a pointer to the page ("returns a pointer to a Page literal")
+Is this different from returning the memory address where the page is stored?
+
 the &Page returns the memory location where Page is stored
-the *Padge means that a pointer to a memory location is being returned
+the *Page means that a pointer to a memory location is being returned
 
 you can print that return and see the memory location
-or you can dereference that return (with *) and see the value
+or you can de-reference that return (with *) and see the value
 
 see
 .. / golang-book / 34_chp08_pointers_pass_by_reference
@@ -75,14 +76,21 @@ func main() {
 	p1 := &Page{Title: "TestPage", Body: []byte("This is a sample Page.")}
 	p1.save()
 	p2, _ := loadPage("TestPage")
+	// // see the struct as slice of bytes
+	// fmt.Println(p2)
+	// // see the struct as slice of bytes
+	// fmt.Println(*p2)
+	// // see the struct as slice of bytes
+	// fmt.Println(p2.Body)
+	// // access struct values
 	fmt.Println(string(p2.Body))
+	fmt.Println(string(p2.Title))
 }
 
 /*
 Why is the &Page use the &?
 It runs with and without it.
+&Page means we are storing the memory location in p1
 
 What happens if you take 'string' out from the last line?
-
-&Page means we are storing the memory location in p1
 */
