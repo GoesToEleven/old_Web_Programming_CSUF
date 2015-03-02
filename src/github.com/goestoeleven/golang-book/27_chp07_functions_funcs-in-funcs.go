@@ -14,3 +14,5 @@ func main() {
 	fmt.Println(add(1, 1))
 
 }
+
+// assigning a function to a variable also known as function literal
