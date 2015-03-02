@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -83,8 +84,15 @@ func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.Handl
 	}
 }
 
+// defaultHandler ADD BY TODD MCLEOD
+func defaultHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "<a href='http://localhost:8080/view/testpage'>"+
+		"http://localhost:8080/view/testpage</a>")
+}
+
 func main() {
 	flag.Parse()
+	http.HandleFunc("/", defaultHandler)
 	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", makeHandler(editHandler))
 	http.HandleFunc("/save/", makeHandler(saveHandler))

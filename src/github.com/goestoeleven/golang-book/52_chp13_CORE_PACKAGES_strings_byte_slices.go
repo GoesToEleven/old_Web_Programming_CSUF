@@ -10,7 +10,7 @@ To convert a string to a slice of bytes (and vice-versa) do this:
 func main() {
 	arr := []byte("test")
 	fmt.Println(arr)
-
+	fmt.Println(string(arr))
 	str := string([]byte{'t', 'e', 's', 't'})
 	fmt.Println(str)
 

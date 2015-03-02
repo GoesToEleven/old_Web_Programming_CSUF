@@ -35,6 +35,9 @@ func (p *Page) save() error {
 /*
 the receiver is a pointer to a struct
 this allows us to change the data in the struct (pass by reference)
+it also allows us to only pass the memory address of the struct as opposed
+to passing all of the data in the struct
+
 
 
 ioutil.WriteFile

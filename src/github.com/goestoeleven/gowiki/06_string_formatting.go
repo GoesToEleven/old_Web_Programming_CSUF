@@ -1,6 +1,7 @@
 // Go offers excellent support for string formatting in
 // the `printf` tradition. Here are some examples of
 // common string formatting tasks.
+// https://gobyexample.com/string-formatting
 
 package main
 

@@ -28,7 +28,7 @@ func main() {
 }
 
 /*
-Print, Printf, Println don't print to browser, only to the terminal
+Print, Fprint, Println don't print to browser, only to the terminal
 you need to have a writer (io.Writer) as a param which means using Fprint, Fprintf, Fprintln
 https://golang.org/pkg/fmt/#Fprint
 
