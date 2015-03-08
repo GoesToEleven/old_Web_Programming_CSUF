@@ -29,3 +29,16 @@ func GetPort() string {
 	}
 	return ":" + port
 }
+
+/*
+handle
+handlefunc
+handler
+handlerfunc
+
+http://golang.org/pkg/net/http/#Handle				// takes a string & a handler
+http://golang.org/pkg/net/http/#HandleFunc		// takes a string & a handlerfunc
+http://golang.org/pkg/net/http/#Handler				// defines the handler interface
+http://golang.org/pkg/net/http/#HandlerFunc		// a func that implements the handler interface
+
+*/

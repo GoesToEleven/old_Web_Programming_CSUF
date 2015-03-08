@@ -24,18 +24,18 @@ type IpRecord struct {
 }
 
 func main() {
-        http.HandleFunc("/", handler)
-        fmt.Println("listening...")
-        err := http.ListenAndServe(GetPort(), nil)
-        if err != nil {
-                log.Fatal("ListenAndServe: ", err)
-                return
-        }
+	http.HandleFunc("/", handler)
+	fmt.Println("listening...")
+	err := http.ListenAndServe(GetPort(), nil)
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err)
+		return
+	}
 }
 
 // Get the Port from the environment so we can run on Heroku
 func GetPort() string {
-        var port = os.Getenv("PORT")
+	var port = os.Getenv("PORT")
 	// Set a default port if there is nothing in the environment
 	if port == "" {
 		port = "4747"
@@ -45,8 +45,8 @@ func GetPort() string {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-        baseURL := "http://api.hostip.info/get_json.php?position=true&ip="
-        ip := "198.252.210.32"
+	baseURL := "http://api.hostip.info/get_json.php?position=true&ip="
+	ip := "198.252.210.32"
 
 	// QueryEscape escapes the ip string so
 	// it can be safely placed inside a URL query
@@ -88,7 +88,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal("ReadAll: ", err)
 		return
 	}
-	//fmt.Printf("%s", body)
+	fmt.Printf("%s", body)
 
 	// We will be using the Unmarshal function
 	// to transform our JSON bytes into the
@@ -108,4 +108,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintf(w, "Latitude = %s and Longitude = %s", *record.Lat, *record.Lng)
+	// fmt.Println()
+	// fmt.Fprintf(w, "%+v", record)
+	// fmt.Fprintln(w, record.CountryName)
+	// fmt.Fprintln(w, record.CountryCode)
+	// fmt.Fprintln(w, record.City)
+	// fmt.Fprintln(w, record.Ip)
+	// fmt.Fprintln(w, *record.Lat)
+	// fmt.Fprintln(w, *record.Lng)
 }
