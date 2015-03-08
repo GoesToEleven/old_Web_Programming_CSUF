@@ -1,2 +1,1 @@
-this is the dog file
-that is in the root folder
+I like dogs

@@ -44,6 +44,9 @@ ioutil.WriteFile
 https://golang.org/pkg/io/ioutil/#WriteFile
 click the "WriteFile" title in the above url to be taken here:
 https://golang.org/src/io/ioutil/ioutil.go?s=2520:2588#L66
+
+re: 0600
+http://en.wikipedia.org/wiki/Umask
 */
 
 // this loads the page from secondary storage to memory

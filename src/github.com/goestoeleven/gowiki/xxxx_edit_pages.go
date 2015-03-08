@@ -11,8 +11,9 @@ type Page struct {
 	Body  []byte
 }
 
-func (p *Page) save() error {
-	filename := p.Title + ".txt"
+func (p *Page) saveHandler() error {
+	title := r.URL.Path[len("/save/"):]
+	filename := title + ".txt"
 	return ioutil.WriteFile(filename, p.Body, 0600)
 }
 
@@ -55,6 +56,6 @@ func main() {
 	http.HandleFunc("/", defaultHandler)
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/edit/", editHandler)
-	// http.HandleFunc("/save/", saveHandler)
+	http.HandleFunc("/save/", saveHandler)
 	http.ListenAndServe(":8080", nil)
 }
