@@ -23,14 +23,17 @@ func main() {
 		Emails: []string{"satish@rubylearning.org", "satishtalim@gmail.com"},
 	}
 
+	// STEP 1: create a new template
 	t := template.New("Person template")
 
+	// STEP 2: parse the string into the template
 	t, err := t.Parse(tmpl)
 	if err != nil {
 		log.Fatal("Parse: ", err)
 		return
 	}
 
+	// STEP 3: execute the template
 	err = t.Execute(os.Stdout, person)
 	if err != nil {
 		log.Fatal("Execute: ", err)

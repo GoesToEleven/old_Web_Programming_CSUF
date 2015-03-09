@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	// NOTE: tmpfiles does NOT exist on my server
 	fs := http.FileServer(http.Dir("public"))
 	http.Handle("/tmpfiles/", http.StripPrefix("/tmpfiles/", fs))
 
@@ -35,8 +36,8 @@ func GetPort() string {
 }
 
 func ServeTemplate(w http.ResponseWriter, r *http.Request) {
-	lp := path.Join("templates", "layout.html")
-	fp := path.Join("templates", r.URL.Path)
+	lp := path.Join("templates", "layout.html") // templates/layout.html
+	fp := path.Join("templates", r.URL.Path)    // templates/r.URL.Path[1:]
 
 	// Return a 404 if the template doesn't exist
 	info, err := os.Stat(fp)
@@ -52,6 +53,10 @@ func ServeTemplate(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
+
+	// STEP 1: create a new template - looks like it's automatically created
+	// STEP 2: parse the string into the template
+	// STEP 3: execute the template
 
 	templates, _ := template.ParseFiles(lp, fp)
 	if err != nil {
