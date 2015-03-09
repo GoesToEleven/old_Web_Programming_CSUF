@@ -34,6 +34,7 @@ func main() {
 	}
 
 	// STEP 3: execute the template
+	//merge template with data
 	err = t.Execute(os.Stdout, person)
 	if err != nil {
 		log.Fatal("Execute: ", err)

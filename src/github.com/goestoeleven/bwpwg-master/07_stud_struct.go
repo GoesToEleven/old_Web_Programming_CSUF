@@ -16,16 +16,21 @@ func main() {
 	//define an instance
 	s := Student{"Satish"}
 
-	//create a new template with some name
+	// STEP 1: create a new template
+	// STEP 2: parse the string into the template
+	// STEP 3: execute the template
+
+	// STEP 1: create a new template with some name
 	tmpl := template.New("test")
 
-	//parse some content and generate a template
+	// STEP 2: parse the string into the template
 	tmpl, err := tmpl.Parse("Hello {{.Name}}!")
 	if err != nil {
 		log.Fatal("Parse: ", err)
 		return
 	}
 
+	// STEP 3: execute the template
 	//merge template 'tmpl' with content of 's'
 	err1 := tmpl.Execute(os.Stdout, s)
 	if err1 != nil {
