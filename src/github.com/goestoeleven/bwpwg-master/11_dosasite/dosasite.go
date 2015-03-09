@@ -2,19 +2,18 @@ package main
 
 import (
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 	"os"
-	"path"
 )
 
 func main() {
-	// NOTE: tmpfiles does NOT exist on my server
+	// http://golang.org/pkg/net/http/#StripPrefix
+	// To serve a directory on disk (/public) under an alternate URL
+	// path (/tmpfiles/), use StripPrefix to modify the request
+	// URL's path before the FileServer sees it:
 	fs := http.FileServer(http.Dir("public"))
 	http.Handle("/tmpfiles/", http.StripPrefix("/tmpfiles/", fs))
-
-	http.HandleFunc("/", ServeTemplate)
 
 	fmt.Println("Listening...")
 	err := http.ListenAndServe(GetPort(), nil)
@@ -35,35 +34,15 @@ func GetPort() string {
 	return ":" + port
 }
 
-func ServeTemplate(w http.ResponseWriter, r *http.Request) {
-	lp := path.Join("templates", "layout.html") // templates/layout.html
-	fp := path.Join("templates", r.URL.Path)    // templates/r.URL.Path[1:]
+/*
+handle
+handlefunc
+handler
+handlerfunc
 
-	// Return a 404 if the template doesn't exist
-	info, err := os.Stat(fp)
-	if err != nil {
-		if os.IsNotExist(err) {
-			http.NotFound(w, r)
-			return
-		}
-	}
+http://golang.org/pkg/net/http/#Handle				// takes a string & a handler
+http://golang.org/pkg/net/http/#HandleFunc		// takes a string & a handlerfunc
+http://golang.org/pkg/net/http/#Handler				// defines the handler interface
+http://golang.org/pkg/net/http/#HandlerFunc		// a func that implements the handler interface
 
-	// Return a 404 if the request is for a directory
-	if info.IsDir() {
-		http.NotFound(w, r)
-		return
-	}
-
-	// STEP 1: create a new template - looks like it's automatically created
-	// STEP 2: parse the string into the template
-	// STEP 3: execute the template
-
-	templates, _ := template.ParseFiles(lp, fp)
-	if err != nil {
-		fmt.Println(err)
-		http.Error(w, "500 Internal Server Error", 500)
-		return
-	}
-
-	templates.ExecuteTemplate(w, "layout", nil)
-}
+*/
