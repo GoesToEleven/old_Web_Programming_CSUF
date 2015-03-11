@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", myFunction)
 	fmt.Println("listening...")
 	err := http.ListenAndServe(GetPort(), nil)
 	if err != nil {
@@ -28,6 +28,6 @@ func GetPort() string {
 	return ":" + port
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func myFunction(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello. This is our first Go web program!")
 }

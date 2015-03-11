@@ -30,9 +30,11 @@ Josie
 		{"Cousin Rodney", "", false},
 	}
 
+	// STEP 1 & STEP 2
 	// Create a new template and parse the letter into it.
 	t := template.Must(template.New("letter").Parse(letter))
 
+	//STEP 3
 	// Execute the template for each recipient.
 	for _, r := range recipients {
 		err := t.Execute(os.Stdout, r)
@@ -42,3 +44,5 @@ Josie
 	}
 
 }
+
+// FROM : http://golang.org/pkg/text/template/#example_Template

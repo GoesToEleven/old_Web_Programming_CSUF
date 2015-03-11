@@ -24,7 +24,7 @@ type IpRecord struct {
 }
 
 func main() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", myHandlerFunc)
 	fmt.Println("listening...")
 	err := http.ListenAndServe(GetPort(), nil)
 	if err != nil {
@@ -44,7 +44,7 @@ func GetPort() string {
 	return ":" + port
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func myHandlerFunc(w http.ResponseWriter, r *http.Request) {
 	baseURL := "http://api.hostip.info/get_json.php?position=true&ip="
 	ip := "198.252.210.32"
 
@@ -108,12 +108,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintf(w, "Latitude = %s and Longitude = %s", *record.Lat, *record.Lng)
-	// fmt.Println()
-	// fmt.Fprintf(w, "%+v", record)
-	// fmt.Fprintln(w, record.CountryName)
-	// fmt.Fprintln(w, record.CountryCode)
-	// fmt.Fprintln(w, record.City)
-	// fmt.Fprintln(w, record.Ip)
-	// fmt.Fprintln(w, *record.Lat)
-	// fmt.Fprintln(w, *record.Lng)
+	fmt.Println()
+	fmt.Fprintf(w, "%+v", record)
+	fmt.Fprintln(w, record.CountryName)
+	fmt.Fprintln(w, record.CountryCode)
+	fmt.Fprintln(w, record.City)
+	fmt.Fprintln(w, record.Ip)
+	fmt.Fprintln(w, *record.Lat)
+	fmt.Fprintln(w, *record.Lng)
 }

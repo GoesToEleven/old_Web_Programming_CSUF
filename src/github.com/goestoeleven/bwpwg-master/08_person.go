@@ -27,6 +27,8 @@ func main() {
 	t := template.New("Person template")
 
 	// STEP 2: parse the string into the template
+	// in lay terms: "give the template your form letter"
+	// in lay terms: "put your form letter into the template"
 	t, err := t.Parse(tmpl)
 	if err != nil {
 		log.Fatal("Parse: ", err)
