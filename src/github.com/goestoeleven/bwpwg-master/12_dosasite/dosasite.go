@@ -36,20 +36,20 @@ func GetPort() string {
 }
 
 func ServeTemplate(w http.ResponseWriter, r *http.Request) {
-	lp := path.Join("templates", "layout.html") // templates/layout.html
+	lp := path.Join("templates", "layout.html") // templates/layout.html 					// http://golang.org/pkg/path/#Join
 	fp := path.Join("templates", r.URL.Path)    // templates/r.URL.Path[1:]
 
 	// Return a 404 if the template doesn't exist
-	info, err := os.Stat(fp)
+	info, err := os.Stat(fp) // http://golang.org/pkg/os/#Stat
 	if err != nil {
-		if os.IsNotExist(err) {
-			http.NotFound(w, r)
+		if os.IsNotExist(err) { // http://golang.org/pkg/os/#IsNotExist
+			http.NotFound(w, r) // http://golang.org/pkg/net/http/#NotFound
 			return
 		}
 	}
 
 	// Return a 404 if the request is for a directory
-	if info.IsDir() {
+	if info.IsDir() { // http://golang.org/pkg/os/#FileMode.IsDir
 		http.NotFound(w, r)
 		return
 	}
@@ -58,12 +58,15 @@ func ServeTemplate(w http.ResponseWriter, r *http.Request) {
 	// STEP 2: parse the string into the template
 	// STEP 3: execute the template
 
-	templates, _ := template.ParseFiles(lp, fp)
+	templates, _ := template.ParseFiles(lp, fp) // http://golang.org/pkg/html/template/#ParseFiles // http://golang.org/pkg/html/template/#Template.ParseFiles
 	if err != nil {
 		fmt.Println(err)
 		http.Error(w, "500 Internal Server Error", 500)
 		return
 	}
 
-	templates.ExecuteTemplate(w, "layout", nil)
+	templates.ExecuteTemplate(w, "layout", nil) // http://golang.org/pkg/html/template/#Template.ExecuteTemplate
 }
+
+// TO RUN THIS FILE
+// http://localhost:4747/indexnew.html
