@@ -56,7 +56,10 @@ func ServeTemplate(w http.ResponseWriter, r *http.Request) {
 
 	// STEP 1: create a new template - looks like it's automatically created
 	// STEP 2: parse the string into the template
+	//  // in lay terms: "give the template your form letter"
+	//  // in lay terms: "put your form letter into the template"
 	// STEP 3: execute the template
+	//  // merge template with data
 
 	templates, _ := template.ParseFiles(lp, fp) // http://golang.org/pkg/html/template/#ParseFiles // http://golang.org/pkg/html/template/#Template.ParseFiles
 	if err != nil {

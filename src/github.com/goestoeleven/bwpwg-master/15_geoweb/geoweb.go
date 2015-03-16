@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-        "html/template"
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -12,29 +12,28 @@ import (
 )
 
 func main() {
-        http.HandleFunc("/", handler)
-        http.HandleFunc("/showimage", showimage)
-        fmt.Println("listening...")
-        err := http.ListenAndServe(GetPort(), nil)
-        if err != nil {
-                log.Fatal("ListenAndServe: ", err)
-        }
+	http.HandleFunc("/", handler)
+	http.HandleFunc("/showimage", showimage)
+	fmt.Println("listening...")
+	err := http.ListenAndServe(GetPort(), nil)
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err)
+	}
 }
 
 // Get the Port from the environment so we can run on Heroku
 func GetPort() string {
-        var port = os.Getenv("PORT")
+	var port = os.Getenv("PORT")
 	// Set a default port if there is nothing in the environment
 	if port == "" {
 		port = "4747"
-		fmt.Println("INFO: No PORT environment variable detected, 
-		             defaulting to " + port)
+		fmt.Println("INFO: No PORT environment variable detected, defaulting to " + port)
 	}
 	return ":" + port
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprint(w, rootForm)
+	fmt.Fprint(w, rootForm)
 }
 
 const rootForm = `
@@ -43,7 +42,7 @@ const rootForm = `
       <head>
         <meta charset="utf-8">
         <title>Go View</title>
-        <link rel="stylesheet" href="/stylesheets/goview.css">        
+        <link rel="stylesheet" href="/stylesheets/goview.css">
       </head>
       <body>
         <h1><img style="margin-left: 120px;" src="images/gsv.png" alt="Go View" />GoView</h1>
@@ -57,19 +56,26 @@ const rootForm = `
     </html>
 `
 
+// STEP 1: create a new template
+//  // http://golang.org/pkg/html/template/#New *** OR THIS ONE? *** http://golang.org/pkg/html/template/#Template.New
+// STEP 2: parse the string into the template
+//  // in lay terms: "give the template your form letter"
+//  // in lay terms: "put your form letter into the template"
+//  // http://golang.org/pkg/html/template/#Template.Parse
+//  // http://golang.org/pkg/html/template/#Must
 var upperTemplate = template.Must(template.New("showimage").Parse(upperTemplateHTML))
 
 func showimage(w http.ResponseWriter, r *http.Request) {
-        // Sample address "1600 Amphitheatre Parkway, Mountain View, CA"
-        addr := r.FormValue("str")
+	// Sample address "1600 Amphitheatre Parkway, Mountain View, CA"
+	addr := r.FormValue("str")
 
 	// QueryEscape escapes the addr string so
 	// it can be safely placed inside a URL query
 	// safeAddr := url.QueryEscape(addr)
-        safeAddr := url.QueryEscape(addr)
-        fullUrl := fmt.Sprintf(
-          "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=%s",
-           safeAddr)
+	safeAddr := url.QueryEscape(addr)
+	fullUrl := fmt.Sprintf(
+		"http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=%s",
+		safeAddr)
 
 	// For control over HTTP client headers,
 	// redirect policy, and other settings,
@@ -102,7 +108,39 @@ func showimage(w http.ResponseWriter, r *http.Request) {
 		log.Fatal("ReadAll: ", dataReadErr)
 	}
 
-        res := make(map[string][]map[string]map[string]map[string]interface{}, 0)
+	res := make(map[string][]map[string]map[string]map[string]interface{}, 0)
+	// https://developers.google.com/maps/documentation/geocoding/#JSON
+	// making a map
+	// with a key of [string]
+	// and a value of a slice of maps: []map
+	// and the slice of maps will have THREE more maps in it
+	//   // map 1: [string]map
+	//   // map 2: [string]map
+	//   // map 3: [string]interface{}
+	//   // and the initial size of the map is 0
+	//   // http://golang.org/pkg/builtin/#make
+
+	/* REMINDERS
+
+	   reminder from samples/54...
+	   	// Maps - Shorthand Notation
+	   	myGreeting := map[string]string{
+	   		"Tim":     "Good morning!",
+	   		"Jenny":   "Bonjour!",
+	   }
+
+	   reminder from samples/60...
+	   mySlice := []int{1, 5, 15, 20, 25, 30}
+
+	   reminder from samples/85...
+	   // (1) - declare a type
+	   // (2) - say that it's an interface
+	   // (3) - declare the method(s)
+	   type renamable interface {
+	   	rename(newName string)
+	   }
+
+	*/
 
 	// We will be using the Unmarshal function
 	// to transform our JSON bytes into the
@@ -112,29 +150,29 @@ func showimage(w http.ResponseWriter, r *http.Request) {
 	// filled with the JSON data (this is simplifying,
 	// it actually accepts an interface)
 	json.Unmarshal(body, &res)
-        
+
 	lat, _ := res["results"][0]["geometry"]["location"]["lat"]
 	lng, _ := res["results"][0]["geometry"]["location"]["lng"]
-	
-	// %.13f is used to convert float64 to a string
-	queryUrl := 
-	  fmt.Sprintf(
-	    "http://maps.googleapis.com/maps/api/streetview?sensor=false
-	            &size=600x300&location=%.13f,%.13f", lat, lng)
 
-        tempErr := upperTemplate.Execute(w, queryUrl)
-        if tempErr != nil {
-	        http.Error(w, tempErr.Error(), http.StatusInternalServerError)
-        }
+	// %.13f is used to convert float64 to a string
+	// https://gobyexample.com/string-formatting
+	queryUrl :=
+		fmt.Sprintf(
+			"http://maps.googleapis.com/maps/api/streetview?sensor=false&size=600x300&location=%.13f,%.13f", lat, lng)
+
+	tempErr := upperTemplate.Execute(w, queryUrl)
+	if tempErr != nil {
+		http.Error(w, tempErr.Error(), http.StatusInternalServerError)
+	}
 }
 
-const upperTemplateHTML = ` 
+const upperTemplateHTML = `
 <!DOCTYPE html>
   <html>
     <head>
       <meta charset="utf-8">
       <title>Display Image</title>
-      <link rel="stylesheet" href="/stylesheets/goview.css">              
+      <link rel="stylesheet" href="/stylesheets/goview.css">
     </head>
     <body>
       <h1><img style="margin-left: 120px;" src="images/gsv.png" alt="Street View" />GoView</h1>

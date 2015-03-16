@@ -42,7 +42,7 @@ const rootForm = `
         <p>The String Upper Service will accept a string from you and
            return you the Uppercase version of the original string. Have fun!</p>
         <form action="/upper" method="post" accept-charset="utf-8">
-	  <input type="text" name="str" value="Type a string..." id="str">
+	  <input type="text" name="str" placeholder="Type a string..." id="str">
 	  <input type="submit" value=".. and change to uppercase!">
         </form>
       </body>
@@ -78,7 +78,7 @@ const upperTemplateHTML = `
     <body>
       <h1>String Upper Results</h1>
       <p>The Uppercase of the string that you had entered is:</p>
-      <pre>{{html .}}</pre>
+      <pre>{{.}}</pre>
     </body>
   </html>
 `
