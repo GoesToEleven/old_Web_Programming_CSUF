@@ -49,7 +49,7 @@ const rootForm = `
         <h2>Accept Address</h2>
         <p>Please enter your address:</p>
         <form style="margin-left: 120px;" action="/showimage" method="post" accept-charset="utf-8">
-          <input type="text" name="str" value="Type address..." id="str" />
+          <input type="text" name="str" placeholder="Type address..." id="str" />
           <input type="submit" value=".. and see the image!" />
         </form>
       </body>
