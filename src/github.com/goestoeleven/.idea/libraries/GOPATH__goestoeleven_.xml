@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;goestoeleven&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../gotest/src" />
+      <root url="file://$PROJECT_DIR$/../../test.go" />
+      <root url="file://$PROJECT_DIR$/../../.DS_Store" />
+      <root url="file://$PROJECT_DIR$/../.DS_Store" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

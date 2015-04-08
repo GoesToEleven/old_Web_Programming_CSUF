@@ -9,10 +9,10 @@ import (
 )
 
 func init() {
-	http.HandleFunc("/", handler)
+	http.HandleFunc("/", myHandler)
 }
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func myHandler(w http.ResponseWriter, r *http.Request) {
 	// [START new_context]
 	c := appengine.NewContext(r)
 	// [END new_context]
