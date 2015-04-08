@@ -5,7 +5,7 @@ import (
     "net/http"
 )
 
-var tmpl = template.Must(template.ParseFiles("index.html"))
+var tmpl = template.Must(template.ParseFiles("site/index.html"))
 
 func init() {
     http.HandleFunc("/", handler)
