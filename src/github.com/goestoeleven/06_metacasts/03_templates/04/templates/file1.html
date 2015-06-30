@@ -9,3 +9,10 @@
 <p>
   <b>Age: </b>{{.Age}}
 </p>
+<p>
+{{ if .IsOld }}
+Age: N/A
+{{ else }}
+Age: {{.Age}}
+{{ end }}
+</p>

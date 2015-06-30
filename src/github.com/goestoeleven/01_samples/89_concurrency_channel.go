@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 
-done := make(chan bool)
+var done = make(chan bool)
 
 func numbers() {
 	for i := 0; i < 10; i++ {

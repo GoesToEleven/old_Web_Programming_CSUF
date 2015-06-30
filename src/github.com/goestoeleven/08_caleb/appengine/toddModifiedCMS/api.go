@@ -123,7 +123,7 @@ func serveDocumentsCreate(res http.ResponseWriter, req *http.Request, params htt
 		if document.ID != "" {
 			return fmt.Errorf("invalid document: id must not be set")
 		}
-		document.ID = uuid.NewV5().String()
+		document.ID = uuid.NewV1().String()
 		userKey := datastore.NewKey(ctx, "User", email, 0, nil)
 		docKey := datastore.NewKey(ctx, "Document", document.ID, 0, userKey)
 		docKey, err = datastore.Put(ctx, docKey, &document)
@@ -256,7 +256,7 @@ func serveFilesUpload(res http.ResponseWriter, req *http.Request, params httprou
 			},
 		}
 
-		id := uuid.NewRandom().String()
+		id := uuid.NewV1().String()
 
 		ff, _, err := req.FormFile("file")
 		if err != nil {

@@ -1,0 +1,48 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"time"
+
+	"appengine"
+	"appengine/datastore"
+	"appengine/user"
+)
+
+type Employee struct {
+	Name     string
+	Role     string
+	HireDate time.Time
+	Account  string
+}
+
+func init() {
+    http.HandleFunc("/", handler)
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	c := appengine.NewContext(r)
+
+	e1 := Employee{
+		Name:     "Jane Citizen",
+		Role:     "Manager",
+		HireDate: time.Now(),
+		Account:  user.Current(c).String(),
+	}
+
+	userKey := datastore.NewIncompleteKey(c, "employee", nil)
+	key, err := datastore.Put(c, userKey, &e1)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	var e2 Employee
+	if err = datastore.Get(c, key, &e2); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	fmt.Fprintf(w, "Stored and retrieved the Employee named %q", e2.Name)
+}

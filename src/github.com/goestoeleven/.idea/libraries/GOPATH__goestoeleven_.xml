@@ -5,6 +5,7 @@
       <root url="file://$PROJECT_DIR$/../../test.go" />
       <root url="file://$PROJECT_DIR$/../../.DS_Store" />
       <root url="file://$PROJECT_DIR$/../.DS_Store" />
+      <root url="file:///usr/local/go/src" />
     </CLASSES>
     <SOURCES />
   </library>
